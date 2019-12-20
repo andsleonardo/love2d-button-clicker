@@ -40,8 +40,8 @@ function love.draw()
 end
 
 function love.mousepressed(x, y, mouse_btn, is_touch)
-  if buttonClicker:isMenu() or buttonClicker:isGameOver() then
-    buttonClicker:startPlaying()
+  if (buttonClicker:isMenu() or buttonClicker:isGameOver()) then
+    if mouse_btn == 2 then buttonClicker:startPlaying() end
 
   elseif buttonClicker:isPlaying() then
     if mouse_btn == 1 and button:is_clicked() then
