@@ -1,7 +1,13 @@
 local timer = {
   seconds = TIMER_MAX_SECONDS,
   min_seconds = 0,
-  max_seconds = TIMER_MAX_SECONDS
+  max_seconds = TIMER_MAX_SECONDS,
+  wrapper = {
+    x = 0 + SCREEN_MARGIN,
+    y = 0 + SCREEN_MARGIN,
+    size = G.getWidth() - SCREEN_MARGIN * 2,
+    align = "right"
+  }
 }
 
 function timer:reset()
@@ -16,7 +22,7 @@ function timer:isOver()
   return self.seconds < 0
 end
 
-function timer:applyZeroFix()
+function timer:setToZero()
   self.seconds = 0
 end
 
@@ -27,7 +33,7 @@ end
 function timer:draw()
   G.printf(
     "Time left: " .. math.ceil(self.seconds),
-    G.getWidth() / 2, 0, G.getWidth() / 2, "right"
+    self.wrapper.x, self.wrapper.y, self.wrapper.size, self.wrapper.align
   )
 end
 
