@@ -36,6 +36,7 @@ function love.draw()
   elseif buttonClicker:isPlaying() then
     button:draw()
   elseif buttonClicker:isGameOver() then
+    score:setRecord(score.current)
     gameOver:draw()
   end
 end
