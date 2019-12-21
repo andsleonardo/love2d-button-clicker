@@ -2,9 +2,9 @@ require("lib/constants")
 
 -- General game logic and common stuff among all states.
 local buttonClicker = {
+  current_state,
+
   button = require("lib/button"),
-  current_state = "menu",
-  font = G.newFont(FONT_PATH, 42),
   score = require("lib/score"),
   states = {
     menu = require("lib/states/menu"),

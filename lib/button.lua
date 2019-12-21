@@ -3,12 +3,12 @@ require("lib/constants")
 local utils = require("lib/utils")
 
 local button = {
+  center = {
+    x = G.getWidth() / 2,
+    y = G.getHeight() / 2
+  },
   radius = BUTTON_RADIUS,
-  type = "fill",
-  position = {
-    x = 0,
-    y = 0
-  }
+  type = "fill"
 }
 
 function button:spawn()
@@ -21,19 +21,19 @@ function button:respawn()
 end
 
 function button:getX()
-  return self.position.x
+  return self.center.x
 end
 
 function button:setX(x)
-  self.position.x = x
+  self.center.x = x
 end
 
 function button:getY()
-  return self.position.y
+  return self.center.y
 end
 
 function button:setY(y)
-  self.position.y = y
+  self.center.y = y
 end
 
 function button:draw()

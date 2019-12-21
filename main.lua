@@ -9,7 +9,7 @@ local score = buttonClicker.score
 
 function love.load()
   buttonClicker:load()
-  button:spawn()
+  menu:load()
 end
 
 function love.update(dt)
@@ -26,7 +26,7 @@ end
 function love.draw()
   G.setBackgroundColor(35 / 255.0, 44 / 255.0, 51 / 255.0)
   G.setColor(1, 1, 1)
-  G.setFont(buttonClicker.font)
+  G.setFont(MONOGRAM_FONT)
 
   timer:draw()
   score:draw()
