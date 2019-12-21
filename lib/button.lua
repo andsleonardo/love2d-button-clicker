@@ -3,6 +3,7 @@ require("lib/constants")
 local utils = require("lib/utils")
 
 local button = {
+  color = "#FF79C6",
   center = {
     x = G.getWidth() / 2,
     y = G.getHeight() / 2
@@ -37,7 +38,7 @@ function button:setY(y)
 end
 
 function button:draw()
-  G.setColor(0, 169 / 255.0, 165 / 255.0)
+  G.setColor(utils.hex(self.color))
   G.circle(self.type, self:getX(), self:getY(), self.radius)
 end
 
@@ -45,10 +46,10 @@ end
   Returns true if the distance between the mouse and the button center
   is less than or equal to the radius of the circle; false otherwise.
 ]]--
-function button:is_clicked()
+function button:is_clicked(clickPosX, clickPosY)
   distanceBetween =
     utils.distanceBetween(
-      {x = love.mouse.getX(), y = love.mouse.getY()},
+      {x = clickPosX, y = clickPosY},
       {x = button:getX(), y = button:getY()}
     )
 

@@ -1,3 +1,4 @@
+local utils = require("lib/utils")
 local buttonClicker = require("button_clicker")
 
 local menu = buttonClicker.states.menu
@@ -10,6 +11,7 @@ local score = buttonClicker.score
 function love.load()
   buttonClicker:load()
   menu:load()
+  gameOver:load()
 end
 
 function love.update(dt)
@@ -24,12 +26,8 @@ function love.update(dt)
 end
 
 function love.draw()
-  G.setBackgroundColor(35 / 255.0, 44 / 255.0, 51 / 255.0)
-  G.setColor(1, 1, 1)
+  G.setBackgroundColor(utils.hex("#282A36"))
   G.setFont(MONOGRAM_FONT)
-
-  timer:draw()
-  score:draw()
 
   if buttonClicker:isMenu() then
     menu:draw()
@@ -39,6 +37,11 @@ function love.draw()
     score:setRecord(score.current)
     gameOver:draw()
   end
+
+  if not buttonClicker:isMenu() then
+    timer:draw()
+    score:draw()
+  end
 end
 
 function love.mousepressed(x, y, mouse_btn, is_touch)
@@ -46,7 +49,7 @@ function love.mousepressed(x, y, mouse_btn, is_touch)
     if mouse_btn == 2 then buttonClicker:startPlaying() end
 
   elseif buttonClicker:isPlaying() then
-    if mouse_btn == 1 and button:is_clicked() then
+    if mouse_btn == 1 and button:is_clicked(x, y) then
       score:increaseBy(1)
       button:respawn()
     end
