@@ -1,6 +1,4 @@
-local menu = {
-  slug = "menu"
-}
+local menu = {}
 
 function menu:draw()
   G.printf(

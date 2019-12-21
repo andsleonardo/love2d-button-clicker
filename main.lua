@@ -17,7 +17,7 @@ function love.update(dt)
     if timer:isRunning() then timer:decreaseBy(dt) end
 
     if timer:isOver() then
-      timer:applyZeroFix()
+      timer:setToZero()
       buttonClicker:timesUp()
     end
   end
@@ -28,7 +28,7 @@ function love.draw()
   G.setFont(buttonClicker.font)
 
   timer:draw()
-  buttonClicker:renderScore()
+  score:draw()
 
   if buttonClicker:isMenu() then
     menu:draw()
@@ -45,7 +45,7 @@ function love.mousepressed(x, y, mouse_btn, is_touch)
 
   elseif buttonClicker:isPlaying() then
     if mouse_btn == 1 and button:is_clicked() then
-      buttonClicker:increaseScoreBy(1)
+      score:increaseBy(1)
       button:respawn()
     end
   end
