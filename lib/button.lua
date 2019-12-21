@@ -37,7 +37,7 @@ function button:setY(y)
 end
 
 function button:draw()
-  G.setColor(1, 0, 0)
+  G.setColor(0, 169 / 255.0, 165 / 255.0)
   G.circle(self.type, self:getX(), self:getY(), self.radius)
 end
 
@@ -46,13 +46,13 @@ end
   is less than or equal to the radius of the circle; false otherwise.
 ]]--
 function button:is_clicked()
-  distance_between =
-    utils.distance_between(
+  distanceBetween =
+    utils.distanceBetween(
       {x = love.mouse.getX(), y = love.mouse.getY()},
       {x = button:getX(), y = button:getY()}
     )
 
-  return distance_between <= button.radius
+  return distanceBetween <= button.radius
 end
 
 return button

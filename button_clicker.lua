@@ -4,7 +4,7 @@ require("lib/constants")
 local buttonClicker = {
   button = require("lib/button"),
   current_state = "menu",
-  font = G.newFont("assets/monogram_extended.ttf", 42),
+  font = G.newFont(FONT_PATH, 42),
   score = require("lib/score"),
   states = {
     menu = require("lib/states/menu"),
